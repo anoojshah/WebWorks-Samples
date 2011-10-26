@@ -124,7 +124,16 @@ bb = {
 			document.body.removeChild(oldScreen);
 		}
 		
-		//alice.toss({ 'id': id, duration: 1000});
+		/*alice.slide({
+            'id': id,
+            duration: 1000,
+            //origin: '100% 0%',
+            timing: 'ease-in-out',
+            random: 10
+        });*/
+		
+		alice.fadeIn({'id': id, duration: 1.0});
+
 		
 	},
 	
@@ -155,7 +164,15 @@ bb = {
 			document.body.appendChild(container);
 			document.body.removeChild(current);
 			
-			//alice.toss({ 'id': display.id, duration: 1000});
+		/*	alice.slide({
+				'id': display.id,
+				duration: 1000,
+				//origin: '100% 0%',
+				timing: 'ease-in-out',
+				random: 10
+			});*/
+			
+			alice.fadeIn({'id': display.id, duration: 1.0});
 		}		
 	},
 	

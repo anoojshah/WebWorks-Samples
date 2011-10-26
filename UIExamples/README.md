@@ -11,9 +11,7 @@ The sample code for this application is Open Source under the [Apache 2.0 Licens
 
 ## Tested On
 
-* BlackBerry Bold 9700 v5.0.0.469
-* BlackBerry Storm 9550 v5.0.0.469
-* BlackBerry Torch 9800 v6.0.0.227
+* BlackBerry Torch 9860 v7.0.0.x
 
 These examples have been designed for a Smartphone screen size and **not** for the BlackBerry&reg; PlayBook&trade;
 
@@ -32,10 +30,9 @@ These examples have been designed for a Smartphone screen size and **not** for t
 * Fix the layout issues with Pill Buttons on BB6+
 * Fix the layout issues with Tabs on BB6+
 * Fix the layout issues on input controls for BB6+
-* Add input controls from raw HTML/CSS to webworks.js and webworks.css 
-* Add buttons from raw HTML/CSS to webworks.js and webworks.css
-* Add more JavaScript toolkit functionality to webworks.js
-* Find a way to embed the toolkit image files in webworks.css as base64 encoded images
+* Add input controls from raw HTML/CSS to bbUI.js and bbUI.css 
+* Add more JavaScript toolkit functionality to bbUI.js
+* Find a way to embed the toolkit image files in bbUI.css as base64 encoded images
 
 ## How to Build
 
