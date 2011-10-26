@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<!--<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">-->
 <!--
 * Copyright 2010-2011 Research In Motion Limited.
 *
@@ -14,69 +14,58 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 -->
-<html>
-	<head>
-		<meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
-		<meta name="x-blackberry-defaultHoverEffect" content="false" />
-		<link  rel="stylesheet" type="text/css" href="css/webworks.css"><link />
-		<script type="text/javascript" src="js/webworks.js"></script>
-		<style type="text/css">
-			body {
-				background-color: #B5B2B5;
-			}
-		</style>
+
+<div x-ww-type="screen">
+	<x-bb-script id="bbmBubblesJS" src="js/bbmBubbles.js" unloadFunction="unloadPushListeners()"/>
+	<style type="text/css">
+		body,html {
+			background-color: #B5B2B5;
+		}
 		
-		<script type="text/javascript">
+		.bbmInput {
+			position:fixed;
+			bottom:0px;
+			height:45px;
+			right:0px;
+			left:0px;
+			background-color:black;
+			padding: 5px;
+		}
 		
-			blackberry.push.openPushListener(handleMyReturnData, 1212);
-			blackberry.message.sms.addReceiveListener(onSMS);
-			
-			function onSMS(message, sender, dateTime) {
-				insertText(message);
-			}
-			
-			function handleMyReturnData(data) {
-				insertText(data.payload);				
-			}
-			
-			function insertText(data) {
-				var newEntry= document.createElement('div');
-				newEntry.setAttribute('x-ww-type', 'bbm-bubble');
-				newEntry.setAttribute('x-ww-style', 'right');
-				var text = document.createElement('div');
-				newEntry.appendChild(text);
-				text.setAttribute('x-ww-type', 'item');
-				text.setAttribute('x-ww-img', 'images/bbmBubbles/bullet.png');
-				text.innerHTML = data;
-				
-				document.getElementById('screen').appendChild(newEntry);
-				var elements = new Array();
-				elements.push(newEntry);
-				ww.bbmBubble.apply(elements);
-				window.scrollTo(0, document.body.scrollHeight);
-			}
+		.roundedInput {
+			background-color: white;
+			border-radius:3px;
+			padding:5px;
+		}
 		
-		</script>
-	</head>
-	<body>
-		<div id="screen" x-ww-type="screen">
-			<div x-ww-type="bbm-bubble" x-ww-style="right">
-				<div x-ww-type="item" x-ww-img="images/bbmBubbles/bullet.png">My car just broke down and I have one million things to do!!</div> 
-				<div x-ww-type="item" x-ww-img="images/bbmBubbles/bullet.png">Why can&quot;t groceries just come to you?</div> 
-			</div>
-			<div x-ww-type="bbm-bubble" x-ww-style="left">
-				<div x-ww-type="item" x-ww-img="images/bbmBubbles/read.png">The big island was fun.. We were there for our honeymoon.  One side of the island is pretty much desert grass and volcano ash, and the other side is rainforest</div> 
-			</div>
-			<div x-ww-type="bbm-bubble" x-ww-style="right">
-				<div x-ww-type="item" x-ww-img="images/bbmBubbles/bullet.png">Neat! I am seriously considering it</div> 
-			</div>
-			<div x-ww-type="bbm-bubble" x-ww-style="left">
-				<div x-ww-type="item" x-ww-img="images/bbmBubbles/read.png">It's pretty cool, as you drive through the black volcanic ash.. People have brought white rocks and spelled their names.  It's like grafiti made out of rocks</div> 
-				<div x-ww-type="item" x-ww-img="images/bbmBubbles/read.png">Some cool artwork too</div> 
-			</div>
-			<div x-ww-type="bbm-bubble" x-ww-style="right">
-				<div x-ww-type="item" x-ww-img="images/bbmBubbles/bullet.png">Cool!! I'll have to check that out</div> 
-			</div>
-        </div>
-	</body>
-</html>
+		.roundedInput input {
+			border: none;
+			width:100%;
+		}
+	</style>
+	<div id="chatWindow">
+		<div x-bb-type="bbm-bubble" x-bb-style="right">
+			<div x-bb-type="item" x-bb-img="images/bbmBubbles/bullet.png">My car just broke down and I have one million things to do!!</div> 
+			<div x-bb-type="item" x-bb-img="images/bbmBubbles/bullet.png">Why can&quot;t groceries just come to you?</div> 
+		</div>
+		<div x-bb-type="bbm-bubble" x-bb-style="left">
+			<div x-bb-type="item" x-bb-img="images/bbmBubbles/read.png">The big island was fun.. We were there for our honeymoon.  One side of the island is pretty much desert grass and volcano ash, and the other side is rainforest</div> 
+		</div>
+		<div x-bb-type="bbm-bubble" x-bb-style="right">
+			<div x-bb-type="item" x-bb-img="images/bbmBubbles/bullet.png">Neat! I am seriously considering it</div> 
+		</div>
+		<div x-bb-type="bbm-bubble" x-bb-style="left">
+			<div x-bb-type="item" x-bb-img="images/bbmBubbles/read.png">It's pretty cool, as you drive through the black volcanic ash.. People have brought white rocks and spelled their names.  It's like grafiti made out of rocks</div> 
+			<div x-bb-type="item" x-bb-img="images/bbmBubbles/read.png">Some cool artwork too</div> 
+		</div>
+		<div x-bb-type="bbm-bubble" x-bb-style="right">
+			<div x-bb-type="item" x-bb-img="images/bbmBubbles/bullet.png">Cool!! I'll have to check that out</div> 
+		</div>
+	</div>
+	<div class="bbmInput">
+		<div class="roundedInput">
+			<input id="newMsg" type="text" value="hello world" onkeypress="handleKeyPress(event)"></input>
+		</div>
+	</div>
+</div>
+

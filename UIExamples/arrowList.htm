@@ -15,26 +15,19 @@
 * limitations under the License.
 -->
 <div x-bb-type="screen">
-	<x-bb-script id="chartsJS" src="js/charts.js"/>
 	<div style="margin:15px;font-size:13pt;color:Gray;">
-		<p align="center">
-		Below you will find some examples of how you can use Google's chart API in your WebWorks App<br /><br />
-		It also shows how to perform placeholders while you load remote images	        
-		</p>
+		<p align="center">Below you will find an example of using an arrow list in a BlackBerry application</p>
 	</div>
-	
-	<div x-bb-type="round-panel" id="mainList">
-		<div id="chart1" style="height:100px; text-align:center;">
-			Loading Chart...<br />
-			<img style="margin-top:10px;" src="images/loading1.gif" />                    
-		</div>  
+	<div x-bb-type="round-panel" id="mainList"> 
+		 <div x-bb-type="text-arrow-list">
+			<div x-bb-type="item" onclick="alert('click')">Sleepy</div>
+			<div x-bb-type="item" onclick="alert('click')">Sneezy</div>
+			<div x-bb-type="item" onclick="alert('click')">Dopey</div>
+			<div x-bb-type="item" onclick="alert('click')">Grumpy</div>
+			<div x-bb-type="item" onclick="alert('click')">Doc</div>
+			<div x-bb-type="item" onclick="alert('click')">Bashful</div>
+			<div x-bb-type="item" onclick="alert('click')">Happy</div>
+		 </div>
 	</div>
-	
-	<div x-bb-type="round-panel" id="mainList">
-		<div id="chart2" style="height:100px; text-align:center;">
-			Loading Chart...<br />
-			<img style="margin-top:10px;" src="images/loading1.gif" />  
-		</div>   
-	</div>
-	
 </div>
+

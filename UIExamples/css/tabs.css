@@ -20,10 +20,10 @@ body, html {
 	font-family: BBAlpha Sans;
 	font-size: 15pt;
 	overflow:visible;
+	background-color:#F2F2F2;
 }
 
 body {
-	background-image: url('../images/stripes.png');
 	overflow:hidden;
 }
 

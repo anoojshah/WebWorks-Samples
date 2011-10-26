@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-addEventListener('load',doInputLoad,false);
+doInputLoad();
 
 var addressTab = null;
 var contactTab = null;

@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
-<!--
+/*
 * Copyright 2010-2011 Research In Motion Limited.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,15 +12,12 @@
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
 * limitations under the License.
--->
-<html>
-	<head>
-		<meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no,target-densitydpi=device-dpi" />
-		
-		<link  rel="stylesheet" type="text/css" href="css/bbUI.css"><link />
-		<script type="text/javascript" src="js/alice-min.js"></script>
-		<script type="text/javascript" src="js/bbUI.js"></script>
-	</head>
-	<body onload="bb.pushScreen('menu.htm', 'menu');">	
-	</body>
-</html>
+*/
+
+function clickMe() {
+ alert('Your device pin is:' + blackberry.identity.PIN);
+}
+
+blackberry.ui.menu.clearMenuItems();
+var item = new blackberry.ui.menu.MenuItem(false, 1, 'Custom Menu', clickMe);
+blackberry.ui.menu.addMenuItem(item);

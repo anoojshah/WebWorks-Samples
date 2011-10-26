@@ -63,3 +63,17 @@ If you find a bug in a Sample, or have an enhancement request, simply file an [I
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO 
 EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR 
 THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Change Log
+
+**Oct 26, 2011**
+
+* Focused changes to make it work for BB7 devices.. I will degrade back to BB6/BB7 after BB7 is working well
+* Changed main index screen to be more like a BlackBerry list like found in the Options area
+* Added Animation effects from Alice.js
+* Renamed the x-ww tags to x-bb tags
+* Renamed the ww object to bb
+* Renamed webworks.js to bbUI.js
+* Renamed webworks.css to bbUI.css
+* Added a settings example
+* Added a page loader to load the different pages in as div's
