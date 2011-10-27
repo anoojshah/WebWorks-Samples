@@ -18,11 +18,6 @@ These examples have been designed for a Smartphone screen size and **not** for t
 **Requires BlackBerry WebWorks SDK for Smartphones v2.0 or higher**
 
 
-## Dependencies
-
-1. In order to use the spinner on the Input Control Examples [you require the assiciated SpinnerControl extension](https://github.com/blackberry/WebWorks-Community-APIs/tree/master/Smartphone/SpinnerControl) 
-
-
 ## TODOs and Known Issues
 
 * There are some focus based navigation mode issues that still need to be resolved
