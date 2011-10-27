@@ -33,6 +33,7 @@ bb = {
 		} else  {
 			root = element;
 		}
+		bb.screen.apply(root.querySelectorAll('[x-bb-type=screen]'));
 		bb.roundPanel.apply(root.querySelectorAll('[x-bb-type=round-panel]'));
 		bb.textArrowList.apply(root.querySelectorAll('[x-bb-type=text-arrow-list]'));	
 		bb.imageListDark.apply(root.querySelectorAll('[x-bb-type=image-list-dark]'));	
@@ -41,20 +42,20 @@ bb = {
 		bb.inboxList.apply(root.querySelectorAll('[x-bb-type=inbox-list]'));
 		bb.bbmBubble.apply(root.querySelectorAll('[x-bb-type=bbm-bubble]'));
 		bb.pillButtons.apply(root.querySelectorAll('[x-bb-type=pill-buttons]'));
-		bb.labelControlRow.apply(root.querySelectorAll('[x-bb-type=label-control-row]'));
+		bb.labelControlRow.apply(root.querySelectorAll('[x-bb-type=label-control-horizontal-row]'));
 		bb.button.apply(root.querySelectorAll('[x-bb-type=button]'));
 		
 		
 		// perform device specific formatting
-		/*if (bb.device.isBB5()) {
+		if (bb.device.isBB5()) {
 			document.body.style.height = screen.height - 27 + 'px';
 		}
 		else if (bb.device.isBB6()) {
 			document.body.style.height = screen.height - 17 + 'px';
 		}
-		//else if (bb.device.isBB7()) {
-		//	document.body.style.height = screen.height + 'px';
-	//	}*/
+		else if (bb.device.isBB7() && (navigator.appVersion.indexOf('Ripple') < 0)) {
+			document.body.style.height = screen.height + 'px';
+		}
 	},
 	
 	// Contains all device information
@@ -69,9 +70,9 @@ bb = {
 			return navigator.appVersion.indexOf('6.0.0') >= 0;
 		},
 		
-		// Determine if this browser is BB7
+		// Determine if this browser is BB7.. Ripple's Render is similar to that in BB7
 		isBB7: function() {
-			return navigator.appVersion.indexOf('7.0.0') >= 0;
+			return (navigator.appVersion.indexOf('7.0.0') >= 0) || (navigator.appVersion.indexOf('Ripple') >= 0);
 		},
 		
 		// Determines if this device supports touch
@@ -124,15 +125,17 @@ bb = {
 			document.body.removeChild(oldScreen);
 		}
 		
-		/*alice.slide({
-            'id': id,
-            duration: 1000,
-            //origin: '100% 0%',
-            timing: 'ease-in-out',
-            random: 10
-        });*/
+	
 		
 		alice.fadeIn({'id': id, duration: 1.0});
+		
+		/*alice.slide({
+			'id': id,
+			duration: 1000,
+			//origin: '100% 0%',
+			timing: 'ease-in-out',
+			random: 10
+			});*/
 
 		
 	},
@@ -164,18 +167,33 @@ bb = {
 			document.body.appendChild(container);
 			document.body.removeChild(current);
 			
-		/*	alice.slide({
-				'id': display.id,
-				duration: 1000,
-				//origin: '100% 0%',
-				timing: 'ease-in-out',
-				random: 10
-			});*/
-			
+			/*	alice.slide({
+					'id': display.id,
+					duration: 1000,
+					//origin: '100% 0%',
+					timing: 'ease-in-out',
+					random: 10
+				});*/
+				
 			alice.fadeIn({'id': display.id, duration: 1.0});
-		}		
+			
+		} else {
+			if (blackberry) blackberry.app.exit();
+		}
+		
 	},
 	
+	screen: {
+	
+		apply: function(elements) {
+			/*for (var i = 0; i < elements.length; i++) {
+				var outerElement = elements[i];
+				outerElement.setAttribute('class', 'bb-screen');
+				
+			}*/
+		}
+	
+	},
 		
 	roundPanel: {
 		apply: function(elements) {
@@ -220,6 +238,10 @@ bb = {
 				}
 				else {
 					outerElement.setAttribute('class','bb-bb7-round-panel');
+					var items = outerElement.querySelectorAll('[x-bb-type=panel-header]');
+					for (var j = 0; j < items.length; j++) {
+						items[j].setAttribute('class','bb-panel-header');
+					}
 				}
 			}
 		}
@@ -285,14 +307,12 @@ bb = {
 		apply: function(elements) {
 			for (var i = 0; i < elements.length; i++) {
 				var outerElement = elements[i];
-				outerElement.setAttribute('class','bb-label-control-row');
+				outerElement.setAttribute('class','bb-label-control-horizontal-row');
 				// Gather our inner items
-				var items = outerElement.querySelectorAll('input');
-				if (items.length == 1) {
-					var label = document.createElement('div');
-					label.setAttribute('class', 'label');
-					label.innerHTML = outerElement.getAttribute('x-bb-label');
-					outerElement.insertBefore(label, items[0]);
+				var items = outerElement.querySelectorAll('[x-bb-type=label]');
+				for (var j = 0; j < items.length; j++) {
+					var label = items[j];
+					label.setAttribute('class', 'bb-label');
 				
 				  //<div class="label">Title:</div>
 				}

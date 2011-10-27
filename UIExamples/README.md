@@ -27,12 +27,13 @@ These examples have been designed for a Smartphone screen size and **not** for t
 
 * There are some focus based navigation mode issues that still need to be resolved
 * Fix the screen height issue where the bottom of the screen shows the app background color
-* Fix the layout issues with Pill Buttons on BB6+
-* Fix the layout issues with Tabs on BB6+
-* Fix the layout issues on input controls for BB6+
-* Add input controls from raw HTML/CSS to bbUI.js and bbUI.css 
+* Fix the layout issues with Pill Buttons 
+* Fix the layout issues with Tabs 
+* Fix the layout issues on input controls 
 * Add more JavaScript toolkit functionality to bbUI.js
 * Find a way to embed the toolkit image files in bbUI.css as base64 encoded images
+* Need to add Drop down buttons
+* Need to add check box controls
 
 ## How to Build
 
@@ -74,3 +75,12 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 * Renamed webworks.css to bbUI.css
 * Added a settings example
 * Added a page loader to load the different pages in as div's
+
+**Oct 27, 2011**
+
+* Updated the highlight gradient colors
+* Added more fixes to the Settings example
+* Added more fixes to the Input controls example
+* Fixed some screen sizing issues
+* Removed the old input.css that was no longer needed
+

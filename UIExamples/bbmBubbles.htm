@@ -23,7 +23,7 @@
 		}
 		
 		.bbmInput {
-			position:fixed;
+			position:absolute;
 			bottom:0px;
 			height:45px;
 			right:0px;
@@ -42,11 +42,20 @@
 			border: none;
 			width:100%;
 		}
+		
+		.chatWindow {
+			overflow: scroll;
+			position: absolute;
+			bottom: 45px;
+			top: 0px;
+			left: 0px;
+			right: 0px;
+		}
 	</style>
-	<div id="chatWindow">
+	<div id="chatWindow" class="chatWindow">
 		<div x-bb-type="bbm-bubble" x-bb-style="right">
 			<div x-bb-type="item" x-bb-img="images/bbmBubbles/bullet.png">My car just broke down and I have one million things to do!!</div> 
-			<div x-bb-type="item" x-bb-img="images/bbmBubbles/bullet.png">Why can&quot;t groceries just come to you?</div> 
+			<div x-bb-type="item" x-bb-img="images/bbmBubbles/bullet.png">Why can&apos;t groceries just come to you?</div> 
 		</div>
 		<div x-bb-type="bbm-bubble" x-bb-style="left">
 			<div x-bb-type="item" x-bb-img="images/bbmBubbles/read.png">The big island was fun.. We were there for our honeymoon.  One side of the island is pretty much desert grass and volcano ash, and the other side is rainforest</div> 

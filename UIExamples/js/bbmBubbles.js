@@ -45,7 +45,7 @@ function insertText(data, direction) {
 	elements.push(newEntry);
 	bb.bbmBubble.apply(elements);
 	var scrollPos = newEntry.offsetTop + newEntry.style.height;
-	window.scrollTo(0, scrollPos);
+	topContent.scrollTo(0, scrollPos);
 }
 
 function handleKeyPress(e) {
