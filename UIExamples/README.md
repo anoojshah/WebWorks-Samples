@@ -21,7 +21,6 @@ These examples have been designed for a Smartphone screen size and **not** for t
 ## TODOs and Known Issues
 
 * There are some focus based navigation mode issues that still need to be resolved
-* Fix the screen height issue where the bottom of the screen shows the app background color
 * Fix the layout issues with Pill Buttons 
 * Fix the layout issues with Tabs 
 * Fix the layout issues on input controls 
