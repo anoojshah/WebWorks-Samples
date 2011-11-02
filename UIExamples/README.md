@@ -59,6 +59,24 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Change Log
 
+**Nov 2, 2011**
+
+* Removed the dark image list.. it was redundant
+* Added in scaling of items for High/Low resolution screens
+* Added title bar support for screens 
+* Removed the BBM chat input at the bottom of the BBM Bubbles screen
+* Fixed the body sizing for BB7 devices on real devices.  Screen now stretches to full height of the device.
+* Updated colors and sizing to match the BB7 screens that I'm emulating
+* Fixed the border for BB7 buttons and rounded panels
+
+**Oct 27, 2011**
+
+* Updated the highlight gradient colors
+* Added more fixes to the Settings example
+* Added more fixes to the Input controls example
+* Fixed some screen sizing issues
+* Removed the old input.css that was no longer needed
+
 **Oct 26, 2011**
 
 * Focused changes to make it work for BB7 devices.. I will degrade back to BB6/BB7 after BB7 is working well
@@ -71,11 +89,5 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 * Added a settings example
 * Added a page loader to load the different pages in as div's
 
-**Oct 27, 2011**
 
-* Updated the highlight gradient colors
-* Added more fixes to the Settings example
-* Added more fixes to the Input controls example
-* Fixed some screen sizing issues
-* Removed the old input.css that was no longer needed
 

@@ -33,10 +33,10 @@ bb = {
 		} else  {
 			root = element;
 		}
+		
 		bb.screen.apply(root.querySelectorAll('[x-bb-type=screen]'));
 		bb.roundPanel.apply(root.querySelectorAll('[x-bb-type=round-panel]'));
 		bb.textArrowList.apply(root.querySelectorAll('[x-bb-type=text-arrow-list]'));	
-		bb.imageListDark.apply(root.querySelectorAll('[x-bb-type=image-list-dark]'));	
 		bb.imageList.apply(root.querySelectorAll('[x-bb-type=image-list]'));	
 		bb.tallList.apply(root.querySelectorAll('[x-bb-type=tall-list]'));
 		bb.inboxList.apply(root.querySelectorAll('[x-bb-type=inbox-list]'));
@@ -44,7 +44,6 @@ bb = {
 		bb.pillButtons.apply(root.querySelectorAll('[x-bb-type=pill-buttons]'));
 		bb.labelControlRow.apply(root.querySelectorAll('[x-bb-type=label-control-horizontal-row]'));
 		bb.button.apply(root.querySelectorAll('[x-bb-type=button]'));
-		
 		
 		// perform device specific formatting
 		if (bb.device.isBB5()) {
@@ -60,6 +59,9 @@ bb = {
 	
 	// Contains all device information
 	device: {
+	
+		isHiRes: window.innerWidth > 360,
+		
 		// Determine if this browser is BB5
 		isBB5: function() {
 			return navigator.appVersion.indexOf('5.0.0') >= 0;
@@ -72,14 +74,13 @@ bb = {
 		
 		// Determine if this browser is BB7.. Ripple's Render is similar to that in BB7
 		isBB7: function() {
-			return (navigator.appVersion.indexOf('7.0.0') >= 0) || (navigator.appVersion.indexOf('Ripple') >= 0);
+			return (navigator.appVersion.indexOf('7.0.0') >= 0) || (navigator.appVersion.indexOf('7.1.0') >= 0) || (navigator.appVersion.indexOf('Ripple') >= 0);
 		},
 		
 		// Determines if this device supports touch
 		isTouch: function() {
 			return true;
-		}
-		
+		}		
 	},
 	
 	loadScreen: function(url, id) {
@@ -186,11 +187,30 @@ bb = {
 	screen: {
 	
 		apply: function(elements) {
-			/*for (var i = 0; i < elements.length; i++) {
+			for (var i = 0; i < elements.length; i++) {
 				var outerElement = elements[i];
-				outerElement.setAttribute('class', 'bb-screen');
-				
-			}*/
+				if (bb.device.isHiRes) {
+					outerElement.setAttribute('class', 'bb-hires-screen');
+				}
+				if (outerElement.hasAttribute('x-bb-title')) {
+					var outerStyle = outerElement.getAttribute('style'); 
+					var title = document.createElement('div');
+					if (bb.device.isHiRes) {
+						title.setAttribute('class', 'bb-hires-screen-title');
+						outerElement.setAttribute('style', outerStyle + ';padding-top:33px');
+					} else {
+						title.setAttribute('class', 'bb-lowres-screen-title');
+						outerElement.setAttribute('style', outerStyle + ';padding-top:27px');
+					}
+					title.innerHTML = outerElement.getAttribute('x-bb-title');
+					var firstChild = outerElement.firstChild;
+					if (firstChild != undefined && firstChild != null) {
+						outerElement.insertBefore(title, firstChild);
+					} else {
+						outerElement.appendChild(title);
+					}
+				}
+			}
 		}
 	
 	},
@@ -240,7 +260,12 @@ bb = {
 					outerElement.setAttribute('class','bb-bb7-round-panel');
 					var items = outerElement.querySelectorAll('[x-bb-type=panel-header]');
 					for (var j = 0; j < items.length; j++) {
-						items[j].setAttribute('class','bb-panel-header');
+						if (bb.device.isHiRes) {
+							items[j].setAttribute('class','bb-hires-panel-header');
+						} else {
+							items[j].setAttribute('class','bb-lowres-panel-header');
+						}
+						
 					}
 				}
 			}
@@ -296,6 +321,7 @@ bb = {
 					}
 				}
 				outerElement.setAttribute('class',normal);
+				outerElement.setAttribute('x-blackberry-focusable','true');
 				outerElement.setAttribute('onmouseover',"this.setAttribute('class','" + highlight +"')");
 				outerElement.setAttribute('onmouseout',"this.setAttribute('class','" + normal + "')");
 			}	
@@ -313,8 +339,6 @@ bb = {
 				for (var j = 0; j < items.length; j++) {
 					var label = items[j];
 					label.setAttribute('class', 'bb-label');
-				
-				  //<div class="label">Title:</div>
 				}
 			}	
 		}
@@ -322,7 +346,6 @@ bb = {
 	
 	/* Object that contains all the logic for Pill Buttons*/
 	pillButtons: {
-		
 		// Apply our transforms to all pill buttons passed in
 		apply: function(elements) {
 			for (var i = 0; i < elements.length; i++) {
@@ -401,52 +424,17 @@ bb = {
 		}
 	},
 	
-	imageListDark: {
-		apply: function(elements) {
-			// Apply our transforms to all Dark Image Lists
-			for (var i = 0; i < elements.length; i++) {
-				var outerElement = elements[i];
-				outerElement.setAttribute('class','bb-image-list-dark');
-				// Gather our inner items
-				var items = outerElement.querySelectorAll('[x-bb-type=item], [x-bb-type=header]');
-				for (var j = 0; j < items.length; j++) {
-					var innerChildNode = items[j];
-					if (innerChildNode.hasAttribute('x-bb-type')) {
-						var type = innerChildNode.getAttribute('x-bb-type').toLowerCase();
-						
-						if (type == 'header') {
-							innerChildNode.setAttribute('class', 'header');
-							innerChildNode.setAttribute('onmouseover', "this.setAttribute('class','header-hover')");
-							innerChildNode.setAttribute('onmouseout', "this.setAttribute('class','header')");
-							innerChildNode.setAttribute('x-blackberry-focusable','true');
-						}
-						else if (type == 'item') {
-							var description = innerChildNode.innerHTML;
-							innerChildNode.setAttribute('class', 'bb-image-list-dark-item');
-							innerChildNode.setAttribute('onmouseover', "this.setAttribute('class','bb-image-list-dark-item-hover')");
-							innerChildNode.setAttribute('onmouseout', "this.setAttribute('class','bb-image-list-dark-item')");
-							innerChildNode.setAttribute('x-blackberry-focusable','true');
-							innerChildNode.innerHTML = '<img src="'+ innerChildNode.getAttribute('x-bb-img') +'" />\n'+
-											'<div class="details">\n'+
-											'	<span class="title">' + innerChildNode.getAttribute('x-bb-title') + '</span>\n'+
-											'	<div class="description">' + description + '</div>\n'+
-											'</div>\n';
-							innerChildNode.removeAttribute('x-bb-img');
-							innerChildNode.removeAttribute('x-bb-title');
-						
-						}
-					}				
-				}			
-			}	
-		}
-	},
-	
 	imageList: {
 		apply: function(elements) {
 			// Apply our transforms to all Dark Image Lists
 			for (var i = 0; i < elements.length; i++) {
 				var outerElement = elements[i];
-				outerElement.setAttribute('class','bb-image-list');
+				
+				if (bb.device.isHiRes) {
+					outerElement.setAttribute('class','bb-hires-image-list');
+				} else {
+					outerElement.setAttribute('class','bb-lowres-image-list');
+				}
 				// Gather our inner items
 				var items = outerElement.querySelectorAll('[x-bb-type=item]');
 				for (var j = 0; j < items.length; j++) {
@@ -454,15 +442,28 @@ bb = {
 					if (innerChildNode.hasAttribute('x-bb-type')) {
 						var type = innerChildNode.getAttribute('x-bb-type').toLowerCase();
 						var description = innerChildNode.innerHTML;
-						innerChildNode.setAttribute('class', 'bb-image-list-item');
-						innerChildNode.setAttribute('onmouseover', "this.setAttribute('class','bb-image-list-item-hover')");
-						innerChildNode.setAttribute('onmouseout', "this.setAttribute('class','bb-image-list-item')");
-						innerChildNode.setAttribute('x-blackberry-focusable','true');
-						innerChildNode.innerHTML = '<img src="'+ innerChildNode.getAttribute('x-bb-img') +'" />\n'+
-										'<div class="details">\n'+
-										'	<span class="title">' + innerChildNode.getAttribute('x-bb-title') + '</span>\n'+
-										'	<div class="description">' + description + '</div>\n'+
-										'</div>\n';
+						
+						if (bb.device.isHiRes) {
+							innerChildNode.setAttribute('class', 'bb-hires-image-list-item');
+							innerChildNode.setAttribute('onmouseover', "this.setAttribute('class','bb-hires-image-list-item-hover')");
+							innerChildNode.setAttribute('onmouseout', "this.setAttribute('class','bb-hires-image-list-item')");
+							innerChildNode.setAttribute('x-blackberry-focusable','true');
+							innerChildNode.innerHTML = '<img src="'+ innerChildNode.getAttribute('x-bb-img') +'" />\n'+
+											'<div class="details">\n'+
+											'	<span class="title">' + innerChildNode.getAttribute('x-bb-title') + '</span>\n'+
+											'	<div class="description">' + description + '</div>\n'+
+											'</div>\n';
+						} else {
+							innerChildNode.setAttribute('class', 'bb-lowres-image-list-item');
+							innerChildNode.setAttribute('onmouseover', "this.setAttribute('class','bb-lowres-image-list-item-hover')");
+							innerChildNode.setAttribute('onmouseout', "this.setAttribute('class','bb-lowres-image-list-item')");
+							innerChildNode.setAttribute('x-blackberry-focusable','true');
+							innerChildNode.innerHTML = '<img src="'+ innerChildNode.getAttribute('x-bb-img') +'" />\n'+
+											'<div class="details">\n'+
+											'	<span class="title">' + innerChildNode.getAttribute('x-bb-title') + '</span>\n'+
+											'	<div class="description">' + description + '</div>\n'+
+											'</div>\n';						
+						}
 						innerChildNode.removeAttribute('x-bb-img');
 						innerChildNode.removeAttribute('x-bb-title');						
 					}				
@@ -524,11 +525,17 @@ bb = {
 						
 						if (type == 'header') {
 							var description = innerChildNode.innerHTML;
-							innerChildNode.setAttribute('class', 'bb-inbox-list-header');
-							innerChildNode.setAttribute('onmouseover', "this.setAttribute('class','bb-inbox-list-header-hover')");
-							innerChildNode.setAttribute('onmouseout', "this.setAttribute('class','bb-inbox-list-header')");
 							innerChildNode.setAttribute('x-blackberry-focusable','true');
 							innerChildNode.innerHTML = '<p>'+ description +'</p>';
+							if (bb.device.isHiRes) {
+								innerChildNode.setAttribute('class', 'bb-hires-inbox-list-header');
+								innerChildNode.setAttribute('onmouseover', "this.setAttribute('class','bb-hires-inbox-list-header-hover')");
+								innerChildNode.setAttribute('onmouseout', "this.setAttribute('class','bb-hires-inbox-list-header')");
+							} else {
+								innerChildNode.setAttribute('class', 'bb-lowres-inbox-list-header');
+								innerChildNode.setAttribute('onmouseover', "this.setAttribute('class','bb-lowres-inbox-list-header-hover')");
+								innerChildNode.setAttribute('onmouseout', "this.setAttribute('class','bb-lowres-inbox-list-header')");
+							}
 						}
 						else if (type == 'item') {
 							var description = innerChildNode.innerHTML;
@@ -536,16 +543,23 @@ bb = {
 							if (innerChildNode.hasAttribute('x-bb-accent') && innerChildNode.getAttribute('x-bb-accent').toLowerCase() == 'true') {
 								title = '<b>' + title + '</b>';
 							}
-							innerChildNode.setAttribute('class', 'bb-inbox-list-item');
-							innerChildNode.setAttribute('onmouseover', "this.setAttribute('class','bb-inbox-list-item-hover')");
-							innerChildNode.setAttribute('onmouseout', "this.setAttribute('class','bb-inbox-list-item')");
 							innerChildNode.setAttribute('x-blackberry-focusable','true');
 							innerChildNode.innerHTML = '<img src="'+ innerChildNode.getAttribute('x-bb-img') +'" />\n'+
 											'<div class="title">'+ title +'</div>\n'+
 											'<div class="time">' + innerChildNode.getAttribute('x-bb-time') + '</div>\n'+
 											'<div class="description">' + description + '</div>\n';
 							innerChildNode.removeAttribute('x-bb-img');
-							innerChildNode.removeAttribute('x-bb-title');					
+							innerChildNode.removeAttribute('x-bb-title');	
+							
+							if (bb.device.isHiRes) {
+								innerChildNode.setAttribute('class', 'bb-hires-inbox-list-item');
+								innerChildNode.setAttribute('onmouseover', "this.setAttribute('class','bb-hires-inbox-list-item-hover')");
+								innerChildNode.setAttribute('onmouseout', "this.setAttribute('class','bb-hires-inbox-list-item')");
+							} else {
+								innerChildNode.setAttribute('class', 'bb-lowres-inbox-list-item');
+								innerChildNode.setAttribute('onmouseover', "this.setAttribute('class','bb-lowres-inbox-list-item-hover')");
+								innerChildNode.setAttribute('onmouseout', "this.setAttribute('class','bb-lowres-inbox-list-item')");
+							}				
 						}
 					}				
 				}			

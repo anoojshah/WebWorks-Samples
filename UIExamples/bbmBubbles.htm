@@ -15,44 +15,14 @@
 * limitations under the License.
 -->
 
-<div x-ww-type="screen">
+<div x-bb-type="screen">
 	<x-bb-script id="bbmBubblesJS" src="js/bbmBubbles.js" unloadFunction="unloadPushListeners()"/>
 	<style type="text/css">
 		body,html {
 			background-color: #B5B2B5;
-		}
-		
-		.bbmInput {
-			position:absolute;
-			bottom:0px;
-			height:45px;
-			right:0px;
-			left:0px;
-			background-color:black;
-			padding: 5px;
-		}
-		
-		.roundedInput {
-			background-color: white;
-			border-radius:3px;
-			padding:5px;
-		}
-		
-		.roundedInput input {
-			border: none;
-			width:100%;
-		}
-		
-		.chatWindow {
-			overflow: scroll;
-			position: absolute;
-			bottom: 45px;
-			top: 0px;
-			left: 0px;
-			right: 0px;
-		}
+		}	
 	</style>
-	<div id="chatWindow" class="chatWindow">
+	<div id="chatWindow">
 		<div x-bb-type="bbm-bubble" x-bb-style="right">
 			<div x-bb-type="item" x-bb-img="images/bbmBubbles/bullet.png">My car just broke down and I have one million things to do!!</div> 
 			<div x-bb-type="item" x-bb-img="images/bbmBubbles/bullet.png">Why can&apos;t groceries just come to you?</div> 
@@ -69,11 +39,6 @@
 		</div>
 		<div x-bb-type="bbm-bubble" x-bb-style="right">
 			<div x-bb-type="item" x-bb-img="images/bbmBubbles/bullet.png">Cool!! I'll have to check that out</div> 
-		</div>
-	</div>
-	<div class="bbmInput">
-		<div class="roundedInput">
-			<input id="newMsg" type="text" value="hello world" onkeypress="handleKeyPress(event)"></input>
 		</div>
 	</div>
 </div>

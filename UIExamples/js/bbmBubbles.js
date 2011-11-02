@@ -48,15 +48,4 @@ function insertText(data, direction) {
 	topContent.scrollTo(0, scrollPos);
 }
 
-function handleKeyPress(e) {
-	if (e.keyCode == 13) { //enter
-		var input = document.getElementById('newMsg');
-		var value = input.value;
-		if (value != '') {
-			insertText(input.value, 'left');
-			input.value = '';
-		}
-	}
-}
-
 loadPushListeners();

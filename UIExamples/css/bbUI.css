@@ -20,24 +20,55 @@ body, html {
 	font-family: BBAlpha Sans;
 	font-size: 12pt;
 	overflow:visible;
-	background-color:#F2F2F2;
+	background-color:#DDDDDD;
 	user-select: none;
 	-webkit-user-select: none;
 }
 
+.bb-hires-screen {
+	font-size: 16pt;
+}
 
+/* ================================================= 
+   BB7 Screen Title
+   =================================================*/  
+.bb-hires-screen-title {
+	position:fixed;
+	top:0px;
+	left:0px;
+	right:0px;
+	background-color:black;
+	color:white;
+	padding:4px;
+	height: 25px;
+	z-index: 100;
+}
 
+.bb-lowres-screen-title {
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	background-color:black;
+	color:white;
+	padding:4px;
+	height: 20px;
+}
 
 /* ================================================= 
    BB7 Round panels
    =================================================*/
 .bb-bb7-round-panel {
 	border-radius:3px;
-	box-shadow:1px 0px 2px #d4d5d6;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #C6C6C6;
+	box-shadow:1px 0px 2px #D7D7D7;
 	background-color: white;
 	margin-left: 5px;
 	margin-right: 5px;
-	margin-top: 10px;
+	margin-bottom: 3px;
+	margin-top: 3px;
 	padding: 5px;
 }
 
@@ -46,40 +77,42 @@ body, html {
    =================================================*/
 
 .bb-bb7-button {
-	border-width:2px;
-	border-color:black;
+	border-width:1px;
+	border-color:#BCBEC2;
+	border-style: solid;
 	height:40px;
 	color: black;
 	text-align:center;
 	white-space:nowrap;
 	vertical-align: middle;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
 	line-height:40px;
 	display: table-cell;
 	border-radius:5px;
-	box-shadow:1px 1px 1px #969499;
+	box-shadow:1px 1px 1px #DCDCDC;
 	background-clip: padding-box;	
-	background-image: -webkit-gradient(linear, center top, center bottom, from(#eff1f2), to(#dcd7de));
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#F9F9F9), to(#D0D2D4));
 }
 
 
 .bb-bb7-button-highlight{
-	border-width:2px;
-	border-color:black;
+	border-width:1px;
+	border-color:#0060E6;
+	border-style: solid;
 	height:40px;
 	color: White;
 	text-align:center;
 	white-space:nowrap;
 	vertical-align: middle;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
 	line-height:40px;
 	display: table-cell;
 	border-radius:5px;
-	box-shadow:1px 1px 1px #969499;
+	box-shadow:2px 2px 2px #DCDCDC;
 	background-clip: padding-box;	
-	background-image: -webkit-gradient(linear, center top, center bottom, from(#0dacff), to(#0f75ff));	
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#098CEE), to(#1766DB));	
 }
 
 .button-stretch{
@@ -217,7 +250,6 @@ body, html {
 {
 	line-height:40px;
 	padding-left:7px;	
-	font-size: 15pt;	
 	display:inline;
 }
 
@@ -243,157 +275,138 @@ body, html {
 
 
 /* ================================================= 
-   Image List Dark
+   Image List High-Resolution
    =================================================*/
 
 
-.bb-image-list-dark
+.bb-hires-image-list
 {
 	margin:0px;
 	padding:0px;	
-	font-size: 12pt;
-	background-color: #292429;
 }
 
-.bb-image-list-dark .header
+.bb-hires-image-list-item
 {
-	height: 40px;
-	margin: 0px;
-	color: White;	
-	background-image: url('../images/imageListDark/gradientHeader.png');
-	padding-left: 7px;
-	vertical-align: middle;
-	line-height: 40px;
-}
-
-.bb-image-list-dark .header-hover
-{
-	background-image: -webkit-gradient(linear, center top, center bottom, from(#0dacff), to(#0f75ff));
-	/*background-color:#2175F7;*/
-	height: 40px;
-	margin: 0px;
-	color: White;	
-	padding-left: 7px;
-	vertical-align: middle;
-	line-height: 40px;
-}
-
-.bb-image-list-dark-item
-{
-	border-bottom: solid 1px #212021;
-	padding-top: 5px;	
+	border-bottom: solid 1px #D9DCDE;
+	padding-top: 10px;	
 	padding-left: 5px;
 	padding-bottom: 0px;
 	overflow:hidden;
-	height: 41px;
+	height: 60px;
 }
 
-.bb-image-list-dark-item-hover
+.bb-hires-image-list-item-hover
 {
 	/*background-color:#2175F7;*/
 	background-image: -webkit-gradient(linear, center top, center bottom, from(#0dacff), to(#0f75ff));
-	border-bottom: solid 1px #212021;
-	padding-top: 5px;	
+	border-bottom: solid 1px #D9DCDE;
+	padding-top: 10px;	
 	padding-left: 5px;
 	padding-bottom: 0px;
 	overflow:hidden;
-	height: 41px;
+	height: 60px;
 }
 
-.bb-image-list-dark .details
+.bb-hires-image-list .details
 {
 	position:relative;
-	margin-left:40px;
+	margin-left:74px;
 	margin-bottom: 0px;
 }
 
-.bb-image-list-dark .title
-{
-	color:White;
-	overflow: hidden;
-}
-
-.bb-image-list-dark img
-{
-	position:relative;
-	left: 2px;	
-	float:left;
-	height:32px;
-	width:32px;
-}
-
-.bb-image-list-dark .description
-{
-	color:#737173;
-	overflow: hidden;
-	white-space:nowrap;
-	font-size: 10pt;	
-	margin-bottom: 0px;
-}
-
-.bb-image-list-dark-item-hover .description
-{
-	color: White;
-	overflow: hidden;
-	white-space:nowrap;
-	font-size: 10pt;	
-	margin-bottom: 0px;
-}
-
-/* ================================================= 
-   Image List
-   =================================================*/
-
-
-.bb-image-list
-{
-	margin:0px;
-	padding:0px;	
-	font-size: 12pt;
-}
-
-.bb-image-list-item
-{
-	border-bottom: solid 1px Silver;
-	padding-top: 7px;	
-	padding-left: 5px;
-	padding-bottom: 0px;
-	overflow:hidden;
-	height: 46px;
-}
-
-.bb-image-list-item-hover
-{
-	/*background-color:#2175F7;*/
-	background-image: -webkit-gradient(linear, center top, center bottom, from(#0dacff), to(#0f75ff));
-	border-bottom: solid 1px Silver;
-	padding-top: 7px;	
-	padding-left: 5px;
-	padding-bottom: 0px;
-	overflow:hidden;
-	height: 46px;
-}
-
-.bb-image-list .details
-{
-	position:relative;
-	margin-left:50px;
-	margin-bottom: 0px;
-}
-
-.bb-image-list-item .title
+.bb-hires-image-list-item .title
 {
 	color:Black;
 	overflow: hidden;
 }
 
-.bb-image-list-item-hover .title
+.bb-hires-image-list-item-hover .title
 {
 	color:White;
 	overflow: hidden;
 }
 
-.bb-image-list img
+.bb-hires-image-list img
+{
+	position:relative;
+	left: 4px;	
+	float:left;
+	height:48px;
+	width:48px;
+	top:-3px;
+}
+
+.bb-hires-image-list .description
+{
+	color:#737173;
+	overflow: hidden;
+	white-space:nowrap;
+	font-size: 14pt;	
+	margin-bottom: 0px;
+}
+
+.bb-hires-image-list-item-hover .description
+{
+	color: White;
+	overflow: hidden;
+	white-space:nowrap;
+	font-size: 14pt;	
+	margin-bottom: 0px;
+}
+
+/* ================================================= 
+   Image List Low-Resolution
+   =================================================*/
+
+
+.bb-lowres-image-list
+{
+	margin:0px;
+	padding:0px;	
+}
+
+.bb-lowres-image-list-item
+{
+	border-bottom: solid 1px #D9DCDE;
+	padding-top: 9px;	
+	padding-left: 5px;
+	padding-bottom: 0px;
+	overflow:hidden;
+	height: 45px;
+}
+
+.bb-lowres-image-list-item-hover
+{
+	/*background-color:#2175F7;*/
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#0dacff), to(#0f75ff));
+	border-bottom: solid 1px #D9DCDE;
+	padding-top: 9px;	
+	padding-left: 5px;
+	padding-bottom: 0px;
+	overflow:hidden;
+	height: 45px;
+}
+
+.bb-lowres-image-list .details
+{
+	position:relative;
+	margin-left:48px;
+	margin-bottom: 0px;
+}
+
+.bb-lowres-image-list-item .title
+{
+	color:Black;
+	overflow: hidden;
+}
+
+.bb-lowres-image-list-item-hover .title
+{
+	color:White;
+	overflow: hidden;
+}
+
+.bb-lowres-image-list img
 {
 	position:relative;
 	left: 4px;	
@@ -402,7 +415,7 @@ body, html {
 	width:32px;
 }
 
-.bb-image-list .description
+.bb-lowres-image-list .description
 {
 	color:#737173;
 	overflow: hidden;
@@ -411,7 +424,7 @@ body, html {
 	margin-bottom: 0px;
 }
 
-.bb-image-list-item-hover .description
+.bb-lowres-image-list-item-hover .description
 {
 	color: White;
 	overflow: hidden;
@@ -509,17 +522,150 @@ body, html {
 
 
 /* ================================================= 
-   Inbox Style List
+   Inbox Style List - High Resolution
    =================================================*/
 
-.bb-inbox-list
+.bb-hires-inbox-list
 {
 	margin:0px;
 	padding:0px;	
 	font-size: 13pt;
 }
 
-.bb-inbox-list-header
+.bb-hires-inbox-list-header
+{
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#D5D6D7), to(#9E9F9F));
+	/*background-image: url('../images/listHeader.png');*/
+	height:56px;
+	vertical-align:middle;
+	border-bottom: solid 1px #D9DCDE;
+}
+
+.bb-hires-inbox-list-header-hover
+{
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#088FF0), to(#1666DC));
+	/*background-color:#2175F7;*/
+	height:56px;
+	vertical-align:middle;
+	border-bottom: solid 1px #D9DCDE;
+}
+
+.bb-hires-inbox-list-header-hover p
+{
+	color:White;	
+	line-height:56px;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+.bb-hires-inbox-list-header p
+{
+	color: Black;
+	line-height:56px;
+	text-align:center;
+	margin:0px;
+	padding:0px;
+}
+
+.bb-hires-inbox-list-item
+{
+	border-bottom: solid 1px #D9DCDE;
+	padding-top: 7px;
+	padding-bottom: 3px;	
+	padding-left: 5px;
+	height: 52px;
+}
+
+.bb-hires-inbox-list-item-hover
+{
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#088FF0), to(#1666DC));
+	background-color:#2175F7;	
+	border-bottom: solid 1px #D9DCDE;
+	padding-top: 7px;
+	padding-bottom: 3px;	
+	padding-left: 5px;
+	height: 52px;
+}
+
+.bb-hires-inbox-list-item .title
+{
+	margin-left: 13px;
+	color:Black;
+	display:inline;
+}
+
+.bb-hires-inbox-list-item-hover .title
+{
+	margin-left: 13px;
+	color:White;	
+	display:inline;
+}
+
+.bb-hires-inbox-list-item img
+{
+	float:left;
+	margin-left: 7px;
+	margin-top: 7px;
+	height: 32px;
+	width: 32px;
+}
+
+.bb-hires-inbox-list-item-hover img
+{
+	float:left;
+	margin-left: 7px;
+	margin-top: 7px;
+	height: 32px;
+	width: 32px;
+}
+
+.bb-hires-inbox-list-item .description
+{
+	margin-left: 50px;
+	color:#7B7D7B;
+	font-size: 14pt;
+	overflow:hidden;
+}
+
+.bb-hires-inbox-list-item-hover .description
+{
+	margin-left: 50px;
+	color:White;
+	font-size: 14pt;
+	overflow:hidden;	
+}
+
+.bb-hires-inbox-list-item .time
+{
+	position:relative;
+	float:right;	
+	font-size:14pt;
+	margin-right: 5px;
+	color: Black;
+}
+
+.bb-hires-inbox-list-item-hover .time
+{
+	position:relative;
+	float:right;	
+	font-size:14pt;
+	margin-right: 5px;
+	color:White;
+}
+
+/* ================================================= 
+   Inbox Style List - Low Resolution
+   =================================================*/
+
+.bb-lowres-inbox-list
+{
+	margin:0px;
+	padding:0px;	
+	font-size: 13pt;
+}
+
+.bb-lowres-inbox-list-header
 {
 	background-image: -webkit-gradient(linear, center top, center bottom, from(#eff1f2), to(#dcd7de));
 	/*background-image: url('../images/listHeader.png');*/
@@ -527,17 +673,15 @@ body, html {
 	vertical-align:middle;
 }
 
-.bb-inbox-list-header-hover
+.bb-lowres-inbox-list-header-hover
 {
 	height:27px;
 	vertical-align:middle;
 	background-image: -webkit-gradient(linear, center top, center bottom, from(#0dacff), to(#0f75ff));
 	/*background-color:#2175F7;*/
-	/*padding-left: 1px;
-	margin-left: -1px;*/
 }
 
-.bb-inbox-list-header-hover p
+.bb-lowres-inbox-list-header-hover p
 {
 	color:White;	
 	line-height:27px;
@@ -546,7 +690,7 @@ body, html {
 	padding:0px;
 }
 
-.bb-inbox-list-header p
+.bb-lowres-inbox-list-header p
 {
 	color: Black;
 	line-height:27px;
@@ -555,52 +699,52 @@ body, html {
 	padding:0px;
 }
 
-.bb-inbox-list-item
+.bb-lowres-inbox-list-item
 {
-	border-bottom: solid 1px Silver;
+	border-bottom: solid 1px #D9DCDE;
 	padding-top: 5px;
 	padding-bottom: 5px;	
 	padding-left: 5px;
 }
 
-.bb-inbox-list-item-hover
+.bb-lowres-inbox-list-item-hover
 {
 	background-image: -webkit-gradient(linear, center top, center bottom, from(#0dacff), to(#0f75ff));
 	background-color:#2175F7;	
-	border-bottom: solid 1px Silver;
+	border-bottom: solid 1px #D9DCDE;
 	padding-top: 5px;
 	padding-bottom: 5px;	
 	padding-left: 5px;
 	
 }
 
-.bb-inbox-list-item .title
+.bb-lowres-inbox-list-item .title
 {
 	margin-left: 8px;
 	color:Black;
 	display:inline;
 }
 
-.bb-inbox-list-item-hover .title
+.bb-lowres-inbox-list-item-hover .title
 {
 	color:White;	
 	margin-left: 8px;
 	display:inline;
 }
 
-.bb-inbox-list-item img
+.bb-lowres-inbox-list-item img
 {
 	float:left;
 	left: 2px;	
 }
 
-.bb-inbox-list-item-hover img
+.bb-lowres-inbox-list-item-hover img
 {
 	float:left;
 	left: 2px;	
 }
 
-.bb-inbox-list-item .description
+.bb-lowres-inbox-list-item .description
 {
 	margin-left: 38px;
 	color:#7B7D7B;
@@ -608,7 +752,7 @@ body, html {
 	overflow:hidden;
 }
 
-.bb-inbox-list-item-hover .description
+.bb-lowres-inbox-list-item-hover .description
 {
 	margin-left: 38px;
 	color:White;
@@ -616,7 +760,7 @@ body, html {
 	overflow:hidden;	
 }
 
-.bb-inbox-list-item .time
+.bb-lowres-inbox-list-item .time
 {
 	position:relative;
 	float:right;	
@@ -625,7 +769,7 @@ body, html {
 	color:#696969;
 }
 
-.bb-inbox-list-item-hover .time
+.bb-lowres-inbox-list-item-hover .time
 {
 	position:relative;
 	float:right;	
@@ -644,9 +788,7 @@ body, html {
 	margin-right:20px;
 	position:relative;
 	margin-top: 10px;
-	font-size: 13pt;
 }
-
 
 .bb-bbm-bubble-left img 
 {
@@ -709,7 +851,7 @@ body, html {
 	margin-right: 8px;
 	margin-left: 20px;
 	position:relative;
-	font-size: 13pt;
+	/*font-size: 13pt;*/
 }
 
 .bb-bbm-bubble-right .details
@@ -770,16 +912,36 @@ body, html {
 
 
 
+/* ================================================= 
+   Panel Header - High Resolution
+   =================================================*/
 
-
-.bb-panel-header {
+.bb-hires-panel-header {
 	border-bottom: solid 1px #DCDBDB; 
 	margin-bottom: 5px; 
 	padding-bottom: 3px; 
-	font-size: 11pt;
-	color: #9F9C9C;	
+	font-size: 14pt;
+	color: #7C7E80;	
 	font-weight: bold;
 }
+
+/* ================================================= 
+   Panel Header - Low Resolution
+   =================================================*/
+
+.bb-lowres-panel-header {
+	border-bottom: solid 1px #DCDBDB; 
+	margin-bottom: 5px; 
+	padding-bottom: 3px; 
+	font-size: 12pt;
+	color: #7C7E80;	
+	font-weight: bold;
+}
+
+
+/* ================================================= 
+   Not sure if these are needed anymore
+   =================================================*/
 
 .panel-nogap input 
 {
